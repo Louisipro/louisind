@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Louisi Industry - Recrutement</title>
+    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.20.15/babel.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            color: #000000;
+            font-family: 'Playfair Display', serif;
+            overflow-x: hidden;
+            margin: 0;
+        }
+        .luxury-header {
+            background: url('https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=1920&q=80') no-repeat center;
+            background-size: cover;
+            padding: 10rem 0;
+            text-align: center;
+            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.7);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .luxury-form {
+            background: rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 3rem;
+            max-width: 700px;
+            margin: 3rem auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: slideUp 1s ease-out;
+        }
+        .luxury-input {
+            background: rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            color: #000000;
+            padding: 1rem;
+            border-radius: 1rem;
+            width: 100%;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+        .luxury-input:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+            transform: scale(1.02);
+        }
+        .luxury-textarea {
+            resize: none;
+            min-height: 120px;
+        }
+        .luxury-button {
+            background: linear-gradient(45deg, #d4af37, #b8860b);
+            color: #000000;
+            padding: 1.2rem;
+            border-radius: 3rem;
+            font-weight: 700;
+            cursor: not-allowed;
+            opacity: 0.75;
+            width: 100%;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            font-family: 'Cinzel', serif;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+        .luxury-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+        .luxury-button:hover::before {
+            left: 100%;
+        }
+        .luxury-button:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
+        }
+        .luxury-logo {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #d4af37;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5), 0 0 25px rgba(212, 175, 55, 0.3);
+            animation: pulse 2s infinite;
+            font-family: 'Cinzel', serif;
+        }
+        .luxury-text {
+            color: #333333;
+            font-size: 1.1rem;
+        }
+        footer {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes pulse {
+            0% { text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { text-shadow: 0 0 20px rgba(212, 175, 55, 0.7), 0 0 30px rgba(212, 175, 55, 0.5); }
+            100% { text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 0 0 20px rgba(212, 175, 55, 0.3); }
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function RecruitmentForm() {
+            return (
+                <div>
+                    <header className="luxury-header">
+                        <h1 className="luxury-logo float">Louisi Industry</h1>
+                        <h2 className="text-2xl luxury-text mt-4">L'élite, simplement.</h2>
+                    </header>
+                    <main className="luxury-form">
+                        <h3 className="text-2xl mb-6 text-center font-light">Candidature spontanée</h3>
+                        <div className="space-y-5">
+                            <input 
+                                type="text" 
+                                placeholder="Prénom" 
+                                className="luxury-input" 
+                            />
+                            <input 
+                                type="text" 
+                                placeholder="Nom" 
+                                className="luxury-input" 
+                            />
+                            <input 
+                                type="number" 
+                                placeholder="Âge" 
+                                className="luxury-input" 
+                            />
+                            <input 
+                                type="email" 
+                                placeholder="Email" 
+                                className="luxury-input" 
+                            />
+                            <textarea 
+                                placeholder="Votre motivation" 
+                                className="luxury-input luxury-textarea"
+                            ></textarea>
+                            <button 
+                                className="luxury-button" 
+                                disabled
+                            >
+                                Envoyer (Maintenance en cours)
+                            </button>
+                        </div>
+                    </main>
+                    <footer className="luxury-text">
+                        <p>© 2025 Louisi Industry.</p>
+                    </footer>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<RecruitmentForm />, document.getElementById('root'));
+    </script>
+</body>
+</html>
